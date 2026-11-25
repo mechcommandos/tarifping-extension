@@ -1,0 +1,57 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_name__",
+  "description": "__MSG_description__",
+  "version": "1.2.2",
+  "default_locale": "fr",
+  "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "action": { "default_popup": "popup.html", "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png" } },
+  "background": { "service_worker": "background.js" },
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": [
+    "https://www.tarifping.com/*",
+    "https://tarifping.com/*",
+    "http://localhost:8080/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.amazon.com/*", "https://*.amazon.ca/*", "https://*.amazon.com.mx/*", "https://*.amazon.com.br/*", "https://*.amazon.co.uk/*",
+        "https://*.amazon.de/*", "https://*.amazon.fr/*", "https://*.amazon.it/*", "https://*.amazon.es/*", "https://*.amazon.nl/*",
+        "https://*.amazon.be/*", "https://*.amazon.se/*", "https://*.amazon.pl/*", "https://*.amazon.com.tr/*", "https://*.amazon.ae/*",
+        "https://*.amazon.sa/*", "https://*.amazon.eg/*", "https://*.amazon.in/*", "https://*.amazon.ie/*", "https://*.amazon.co.jp/*",
+        "https://*.amazon.sg/*", "https://*.amazon.com.au/*", "https://*.aliexpress.com/*", "https://*.aliexpress.us/*", "https://*.aliexpress.ru/*",
+        "https://*.temu.com/*", "https://*.shein.com/*", "https://*.shein.co.uk/*", "https://*.shein.fr/*", "https://*.shein.de/*",
+        "https://*.shein.es/*", "https://*.shein.it/*", "https://*.shein.nl/*", "https://*.shein.pl/*", "https://*.shein.se/*",
+        "https://*.shein.com.mx/*", "https://*.shein.com.br/*", "https://*.shein.in/*", "https://*.ebay.com/*", "https://*.ebay.fr/*",
+        "https://*.ebay.de/*", "https://*.ebay.co.uk/*", "https://*.ebay.it/*", "https://*.ebay.es/*", "https://*.ebay.nl/*", "https://*.ebay.be/*",
+        "https://*.ebay.pl/*", "https://*.ebay.at/*", "https://*.ebay.ch/*", "https://*.ebay.ie/*", "https://*.ebay.ca/*", "https://*.ebay.com.au/*",
+        "https://*.etsy.com/*", "https://*.cdiscount.com/*", "https://*.fnac.com/*", "https://*.fnac.be/*", "https://*.fnac.ch/*",
+        "https://*.fnac.pt/*", "https://*.fnac.es/*", "https://*.darty.com/*", "https://*.boulanger.com/*", "https://*.manomano.fr/*",
+        "https://*.manomano.es/*", "https://*.manomano.it/*", "https://*.manomano.de/*", "https://*.manomano.co.uk/*", "https://*.leroymerlin.fr/*",
+        "https://*.leroymerlin.es/*", "https://*.leroymerlin.it/*", "https://*.leroymerlin.pt/*", "https://*.leroymerlin.pl/*",
+        "https://*.castorama.fr/*", "https://*.castorama.pl/*", "https://*.decathlon.fr/*", "https://*.decathlon.com/*", "https://*.decathlon.de/*",
+        "https://*.decathlon.es/*", "https://*.decathlon.it/*", "https://*.decathlon.be/*", "https://*.decathlon.nl/*", "https://*.decathlon.pl/*",
+        "https://*.decathlon.pt/*", "https://*.decathlon.co.uk/*", "https://*.decathlon.ch/*", "https://*.carrefour.fr/*", "https://*.carrefour.es/*",
+        "https://*.carrefour.it/*", "https://*.conforama.fr/*", "https://*.sephora.fr/*", "https://*.sephora.com/*", "https://*.sephora.de/*",
+        "https://*.sephora.es/*", "https://*.sephora.it/*", "https://*.sephora.pl/*", "https://*.zara.com/*", "https://*.hm.com/*",
+        "https://*.asos.com/*", "https://*.bol.com/*", "https://*.coolblue.nl/*", "https://*.coolblue.be/*", "https://*.coolblue.de/*",
+        "https://*.kaufland.de/*", "https://*.kaufland.fr/*", "https://*.kaufland.it/*", "https://*.kaufland.pl/*", "https://*.kaufland.cz/*",
+        "https://*.kaufland.sk/*", "https://*.kaufland.at/*", "https://*.mediamarkt.de/*", "https://*.mediamarkt.nl/*", "https://*.mediamarkt.be/*",
+        "https://*.mediamarkt.at/*", "https://*.mediamarkt.es/*", "https://*.mediamarkt.pl/*", "https://*.mediamarkt.ch/*",
+        "https://*.mediaworld.it/*", "https://*.elcorteingles.es/*", "https://*.pccomponentes.com/*", "https://*.pccomponentes.fr/*",
+        "https://*.pccomponentes.it/*", "https://*.pccomponentes.pt/*", "https://*.allegro.pl/*", "https://*.ozon.ru/*", "https://*.wildberries.ru/*",
+        "https://*.mercadolibre.com.mx/*", "https://*.mercadolibre.com.ar/*", "https://*.mercadolibre.com.co/*", "https://*.mercadolibre.cl/*",
+        "https://*.mercadolibre.com.pe/*", "https://*.mercadolibre.com.uy/*", "https://*.mercadolivre.com.br/*", "https://*.noon.com/*",
+        "https://*.homedepot.com/*", "https://*.wayfair.com/*", "https://*.wayfair.co.uk/*", "https://*.wayfair.de/*", "https://*.wayfair.ca/*"
+      ],
+      "js": ["common.js", "content.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://www.tarifping.com/app/extension*", "https://tarifping.com/app/extension*", "http://localhost:8080/app/extension*"],
+      "js": ["connect.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

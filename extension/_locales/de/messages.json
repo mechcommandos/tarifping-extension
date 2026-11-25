@@ -1,0 +1,87 @@
+{
+  "name": {
+    "message": "TarifPing – Preisbeobachtung"
+  },
+  "description": {
+    "message": "Preise bei Amazon, AliExpress, eBay, MediaMarkt, Kaufland und rund 30 weiteren Shops verfolgen: erfasst bei Ihrem Besuch."
+  },
+  "loading": {
+    "message": "Wird geladen…"
+  },
+  "openApp": {
+    "message": "TarifPing öffnen"
+  },
+  "logout": {
+    "message": "Trennen"
+  },
+  "notConnected": {
+    "message": "Erweiterung nicht mit TarifPing verbunden"
+  },
+  "connectIntro": {
+    "message": "Verbinden Sie die Erweiterung mit Ihrem TarifPing-Konto, um die Preise auf diesen Websites zu beobachten:"
+  },
+  "connect": {
+    "message": "Mein Konto verbinden"
+  },
+  "server": {
+    "message": "Server"
+  },
+  "serverHint": {
+    "message": "Adresse Ihres TarifPing (nur für einen lokalen Test ändern)"
+  },
+  "outOfStock": {
+    "message": "ausverkauft"
+  },
+  "recordNow": {
+    "message": "Preis jetzt erfassen"
+  },
+  "changed": {
+    "message": "Preisänderung erfasst, Benachrichtigung gemäß Ihren Einstellungen gesendet."
+  },
+  "recorded": {
+    "message": "Preis erfasst."
+  },
+  "tracked": {
+    "message": "Von TarifPing beobachtet"
+  },
+  "lastPrice": {
+    "message": "letzte Erfassung: $1"
+  },
+  "noPrice": {
+    "message": "Kein Preis auf dieser Seite gefunden. Warten Sie, bis sie fertig geladen ist, oder wählen Sie eine Variante, und öffnen Sie dieses Fenster erneut."
+  },
+  "viewInApp": {
+    "message": "Verlauf in TarifPing ansehen"
+  },
+  "autoHint": {
+    "message": "Der Preis wird bei jedem Besuch dieser Seite automatisch erfasst (höchstens alle 20 Minuten)."
+  },
+  "noFolder": {
+    "message": "Ohne Ordner"
+  },
+  "track": {
+    "message": "Dieses Produkt beobachten"
+  },
+  "nameLabel": {
+    "message": "Name in TarifPing"
+  },
+  "folder": {
+    "message": "Ordner"
+  },
+  "limitReached": {
+    "message": "Limit von $1 Seiten erreicht: Wechseln Sie in TarifPing zu einem höheren Tarif."
+  },
+  "usage": {
+    "message": "$1 / $2 Seiten beobachtet"
+  },
+  "reload": {
+    "message": "Laden Sie die Seite neu, um die Erweiterung in diesem Tab zu aktivieren."
+  },
+  "openProduct": {
+    "message": "Öffnen Sie eine Produktseite auf einer dieser Websites:"
+  },
+  "trackedCount": {
+    "message": "$1 Produkt(e) von der Erweiterung beobachtet."
+  },
+  "promo": { "message": "Aktion: $1" }
+}

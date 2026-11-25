@@ -1,0 +1,87 @@
+{
+  "name": {
+    "message": "TarifPing – śledzenie cen"
+  },
+  "description": {
+    "message": "Śledź ceny na Amazon, AliExpress, eBay, Allegro i w około 30 innych sklepach: zapisywane podczas Twoich wizyt."
+  },
+  "loading": {
+    "message": "Ładowanie…"
+  },
+  "openApp": {
+    "message": "Otwórz TarifPing"
+  },
+  "logout": {
+    "message": "Rozłącz"
+  },
+  "notConnected": {
+    "message": "Rozszerzenie nie jest połączone z TarifPing"
+  },
+  "connectIntro": {
+    "message": "Połącz rozszerzenie z kontem TarifPing, aby śledzić ceny na tych stronach:"
+  },
+  "connect": {
+    "message": "Połącz moje konto"
+  },
+  "server": {
+    "message": "Serwer"
+  },
+  "serverHint": {
+    "message": "Adres Twojego TarifPing (zmień tylko do testu lokalnego)"
+  },
+  "outOfStock": {
+    "message": "wyprzedane"
+  },
+  "recordNow": {
+    "message": "Zapisz cenę teraz"
+  },
+  "changed": {
+    "message": "Zapisano zmianę ceny, powiadomienie wysłane zgodnie z ustawieniami."
+  },
+  "recorded": {
+    "message": "Cena zapisana."
+  },
+  "tracked": {
+    "message": "Śledzone przez TarifPing"
+  },
+  "lastPrice": {
+    "message": "ostatni odczyt: $1"
+  },
+  "noPrice": {
+    "message": "Nie znaleziono ceny na tej stronie. Poczekaj, aż się załaduje, lub wybierz wariant, a potem otwórz to okno ponownie."
+  },
+  "viewInApp": {
+    "message": "Zobacz historię w TarifPing"
+  },
+  "autoHint": {
+    "message": "Cena jest zapisywana automatycznie przy każdej wizycie na tej stronie (najwyżej co 20 minut)."
+  },
+  "noFolder": {
+    "message": "Bez folderu"
+  },
+  "track": {
+    "message": "Śledź ten produkt"
+  },
+  "nameLabel": {
+    "message": "Nazwa w TarifPing"
+  },
+  "folder": {
+    "message": "Folder"
+  },
+  "limitReached": {
+    "message": "Osiągnięto limit $1 stron: przejdź na wyższy plan w TarifPing."
+  },
+  "usage": {
+    "message": "$1 / $2 śledzonych stron"
+  },
+  "reload": {
+    "message": "Odśwież stronę, aby włączyć rozszerzenie w tej karcie."
+  },
+  "openProduct": {
+    "message": "Otwórz stronę produktu w jednym z tych serwisów:"
+  },
+  "trackedCount": {
+    "message": "Produkty śledzone przez rozszerzenie: $1."
+  },
+  "promo": { "message": "Promocja: $1" }
+}

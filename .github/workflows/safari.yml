@@ -1,0 +1,191 @@
+# Extension TarifPing pour Safari : construction sur un Mac de GitHub, puis envoi sur App Store Connect.
+# Mode d'emploi et liste des secrets : safari/README.md, section « Construire sans Mac (GitHub Actions) ».
+#
+# Lancement :
+#  - à la main : onglet Actions > « Safari (macOS + iOS) » > Run workflow ;
+#  - automatiquement : en poussant une étiquette safari-v1.2.3 (git tag safari-v1.2.3 && git push --tags).
+name: Safari (macOS + iOS)
+
+on:
+  workflow_dispatch:
+    inputs:
+      platforms:
+        description: "Plateformes à construire"
+        type: choice
+        options: [both, macOS, iOS]
+        default: both
+      upload:
+        description: "Envoyer sur App Store Connect (sinon : fichiers .pkg/.ipa téléchargeables dans Artifacts)"
+        type: boolean
+        default: true
+  push:
+    tags: ["safari-v*"]
+
+concurrency:
+  group: safari-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: ${{ matrix.platform }}
+    runs-on: macos-15
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ${{ fromJSON(inputs.platforms == 'macOS' && '["macOS"]' || inputs.platforms == 'iOS' && '["iOS"]' || '["macOS","iOS"]') }}
+    env:
+      PLATFORM: ${{ matrix.platform }}
+      UPLOAD: ${{ github.event_name != 'workflow_dispatch' || inputs.upload }}
+      APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+      ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+      APPLE_CERT_P12_BASE64: ${{ secrets.APPLE_CERT_P12_BASE64 }}
+      APPLE_CERT_PASSWORD: ${{ secrets.APPLE_CERT_PASSWORD }}
+      TP_BUNDLE_ID: ${{ vars.TP_BUNDLE_ID || 'com.tarifping.extension' }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Vérifier les secrets
+        run: |
+          missing=""
+          for v in APPLE_TEAM_ID ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_P8; do
+            eval "val=\${$v}"
+            [ -n "$val" ] || missing="$missing $v"
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::Secrets GitHub manquants :$missing (Settings > Secrets and variables > Actions). Voir safari/README.md."
+            exit 1
+          fi
+
+      - name: Choisir la dernière version stable de Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Clé API App Store Connect
+        run: |
+          KEY="$RUNNER_TEMP/AuthKey_${ASC_KEY_ID}.p8"
+          # le secret peut contenir le fichier .p8 tel quel ou encodé en base64
+          if printf '%s' "$ASC_KEY_P8" | grep -q "BEGIN PRIVATE KEY"; then
+            printf '%s\n' "$ASC_KEY_P8" > "$KEY"
+          else
+            printf '%s' "$ASC_KEY_P8" | base64 --decode > "$KEY"
+          fi
+          grep -q "BEGIN PRIVATE KEY" "$KEY" || { echo "::error::ASC_KEY_P8 ne contient pas une clé .p8 valide"; exit 1; }
+          chmod 600 "$KEY"
+          echo "ASC_KEY_PATH=$KEY" >> "$GITHUB_ENV"
+
+      - name: Certificat de distribution (facultatif)
+        if: env.APPLE_CERT_P12_BASE64 != ''
+        run: |
+          KC="$RUNNER_TEMP/tarifping.keychain-db"
+          KC_PASS="$(uuidgen)"
+          printf '%s' "$APPLE_CERT_P12_BASE64" | base64 --decode > "$RUNNER_TEMP/cert.p12"
+          security create-keychain -p "$KC_PASS" "$KC"
+          security set-keychain-settings -lut 21600 "$KC"
+          security unlock-keychain -p "$KC_PASS" "$KC"
+          security import "$RUNNER_TEMP/cert.p12" -P "$APPLE_CERT_PASSWORD" -A -t cert -f pkcs12 -k "$KC"
+          security set-key-partition-list -S apple-tool:,apple: -k "$KC_PASS" "$KC" > /dev/null
+          security list-keychains -d user -s "$KC" $(security list-keychains -d user | tr -d '"')
+          rm -f "$RUNNER_TEMP/cert.p12"
+
+      - name: Générer le projet Xcode
+        run: sh safari/build-safari.sh --no-open
+
+      - name: Version et schéma
+        run: |
+          PROJ="build/safari/TarifPing/TarifPing.xcodeproj"
+          VERSION=$(python3 -c "import json;print(json.load(open('extension/manifest.json'))['version'])")
+          SCHEME=$(xcodebuild -list -json -project "$PROJ" | python3 -c "
+          import json, sys, os
+          p = os.environ['PLATFORM']
+          schemes = json.load(sys.stdin)['project']['schemes']
+          m = [s for s in schemes if '(' + p + ')' in s]
+          print(m[0] if m else '')
+          ")
+          [ -n "$SCHEME" ] || { echo "::error::Schéma $PLATFORM introuvable"; xcodebuild -list -project "$PROJ"; exit 1; }
+          # numéro de build croissant : numéro d'exécution du workflow (+ tentative)
+          BUILD="${{ github.run_number }}${{ github.run_attempt != '1' && format('.{0}', github.run_attempt) || '' }}"
+          echo "PROJ=$PROJ" >> "$GITHUB_ENV"
+          echo "SCHEME=$SCHEME" >> "$GITHUB_ENV"
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "BUILD=$BUILD" >> "$GITHUB_ENV"
+          echo "Version $VERSION ($BUILD), schéma « $SCHEME »"
+
+      - name: Archive (xcodebuild archive)
+        run: |
+          ARCHIVE="$RUNNER_TEMP/TarifPing-$PLATFORM.xcarchive"
+          xcodebuild archive \
+            -project "$PROJ" -scheme "$SCHEME" -configuration Release \
+            -destination "generic/platform=$PLATFORM" \
+            -archivePath "$ARCHIVE" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$ASC_KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            DEVELOPMENT_TEAM="$APPLE_TEAM_ID" \
+            CODE_SIGN_STYLE=Automatic \
+            MARKETING_VERSION="$VERSION" \
+            CURRENT_PROJECT_VERSION="$BUILD" \
+            INFOPLIST_KEY_ITSAppUsesNonExemptEncryption=NO \
+            INFOPLIST_KEY_LSApplicationCategoryType=public.app-category.productivity \
+            > "$RUNNER_TEMP/archive-$PLATFORM.log" 2>&1 \
+            || { grep -E "error:|warning: .*sign" "$RUNNER_TEMP/archive-$PLATFORM.log" | head -50; tail -80 "$RUNNER_TEMP/archive-$PLATFORM.log"; exit 1; }
+          echo "ARCHIVE=$ARCHIVE" >> "$GITHUB_ENV"
+
+      - name: Export et envoi sur App Store Connect
+        run: |
+          if [ "$UPLOAD" = "true" ]; then DEST=upload; else DEST=export; fi
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>destination</key><string>$DEST</string>
+            <key>teamID</key><string>$APPLE_TEAM_ID</string>
+            <key>signingStyle</key><string>automatic</string>
+            <key>manageAppVersionAndBuildNumber</key><false/>
+            <key>uploadSymbols</key><true/>
+          </dict>
+          </plist>
+          EOF
+          xcodebuild -exportArchive \
+            -archivePath "$ARCHIVE" \
+            -exportPath "$RUNNER_TEMP/export-$PLATFORM" \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$ASC_KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            > "$RUNNER_TEMP/export-$PLATFORM.log" 2>&1 \
+            || { grep -E "error" "$RUNNER_TEMP/export-$PLATFORM.log" | head -50; tail -80 "$RUNNER_TEMP/export-$PLATFORM.log"; exit 1; }
+          if [ "$DEST" = "upload" ]; then
+            echo "### $PLATFORM $VERSION ($BUILD) envoyé sur App Store Connect" >> "$GITHUB_STEP_SUMMARY"
+            echo "Le build apparaît dans App Store Connect > TestFlight après le traitement par Apple (10 à 30 min)." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "### $PLATFORM $VERSION ($BUILD) exporté (non envoyé) : voir Artifacts" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Conserver les journaux et l'export
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: safari-${{ matrix.platform }}
+          path: |
+            ${{ runner.temp }}/*.log
+            ${{ runner.temp }}/export-${{ matrix.platform }}/
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Nettoyage
+        if: always()
+        run: |
+          rm -f "$RUNNER_TEMP"/AuthKey_*.p8 "$RUNNER_TEMP/cert.p12"
+          [ -f "$RUNNER_TEMP/tarifping.keychain-db" ] && security delete-keychain "$RUNNER_TEMP/tarifping.keychain-db" || true

@@ -1,0 +1,22 @@
+# Dépôt public de l'extension : on ignore TOUT, sauf les 4 éléments ci-dessous.
+# (tarifping-php/, .env, priceradar-web/... restent hors du dépôt)
+/*
+!/extension/
+!/safari/
+!/.github/
+!/.gitignore
+
+# Secrets : jamais dans le dépôt, même s'ils atterrissent dans un dossier suivi
+.env
+.env.*
+*.p8
+*.p12
+*.mobileprovision
+*.keychain-db
+config.php
+
+# Fichiers générés
+build/
+dist/
+node_modules/
+.DS_Store

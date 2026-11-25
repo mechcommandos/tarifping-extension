@@ -1,0 +1,87 @@
+{
+  "name": {
+    "message": "TarifPing – מעקב מחירים"
+  },
+  "description": {
+    "message": "עקבו אחר מחירים ב-Amazon, AliExpress, eBay ועוד כ-30 חנויות: המחיר נרשם כשאתם מבקרים בדף."
+  },
+  "loading": {
+    "message": "טוען…"
+  },
+  "openApp": {
+    "message": "פתיחת TarifPing"
+  },
+  "logout": {
+    "message": "ניתוק"
+  },
+  "notConnected": {
+    "message": "התוסף לא מחובר ל-TarifPing"
+  },
+  "connectIntro": {
+    "message": "חברו את התוסף לחשבון TarifPing שלכם כדי לעקוב אחרי המחירים באתרים האלה:"
+  },
+  "connect": {
+    "message": "חיבור החשבון שלי"
+  },
+  "server": {
+    "message": "שרת"
+  },
+  "serverHint": {
+    "message": "הכתובת של TarifPing שלכם (לשנות רק לבדיקה מקומית)"
+  },
+  "outOfStock": {
+    "message": "אזל מהמלאי"
+  },
+  "recordNow": {
+    "message": "רישום המחיר עכשיו"
+  },
+  "changed": {
+    "message": "שינוי המחיר נרשם, והתראה נשלחה לפי ההגדרות שלכם."
+  },
+  "recorded": {
+    "message": "המחיר נרשם."
+  },
+  "tracked": {
+    "message": "במעקב של TarifPing"
+  },
+  "lastPrice": {
+    "message": "רישום אחרון: $1"
+  },
+  "noPrice": {
+    "message": "לא נמצא מחיר בדף הזה. חכו לסיום הטעינה או בחרו גרסה, ואז פתחו שוב את החלון הזה."
+  },
+  "viewInApp": {
+    "message": "צפייה בהיסטוריה ב-TarifPing"
+  },
+  "autoHint": {
+    "message": "המחיר נרשם אוטומטית בכל ביקור בדף הזה (לכל היותר פעם ב-20 דקות)."
+  },
+  "noFolder": {
+    "message": "ללא תיקייה"
+  },
+  "track": {
+    "message": "מעקב אחרי המוצר"
+  },
+  "nameLabel": {
+    "message": "השם ב-TarifPing"
+  },
+  "folder": {
+    "message": "תיקייה"
+  },
+  "limitReached": {
+    "message": "הגעתם למגבלה של $1 דפים: שדרגו את המסלול ב-TarifPing."
+  },
+  "usage": {
+    "message": "דפים במעקב: $1 / $2"
+  },
+  "reload": {
+    "message": "טענו מחדש את הדף כדי להפעיל את התוסף בכרטיסייה הזו."
+  },
+  "openProduct": {
+    "message": "פתחו דף מוצר באחד מהאתרים האלה:"
+  },
+  "trackedCount": {
+    "message": "מוצרים במעקב התוסף: $1."
+  },
+  "promo": { "message": "מבצע: $1" }
+}

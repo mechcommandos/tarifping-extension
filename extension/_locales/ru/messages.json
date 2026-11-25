@@ -1,0 +1,87 @@
+{
+  "name": {
+    "message": "TarifPing – отслеживание цен"
+  },
+  "description": {
+    "message": "Следите за ценами на Amazon, AliExpress, eBay, Ozon, Wildberries и ещё 30 магазинах: цена записывается при посещении."
+  },
+  "loading": {
+    "message": "Загрузка…"
+  },
+  "openApp": {
+    "message": "Открыть TarifPing"
+  },
+  "logout": {
+    "message": "Отключить"
+  },
+  "notConnected": {
+    "message": "Расширение не подключено к TarifPing"
+  },
+  "connectIntro": {
+    "message": "Подключите расширение к аккаунту TarifPing, чтобы отслеживать цены на этих сайтах:"
+  },
+  "connect": {
+    "message": "Подключить аккаунт"
+  },
+  "server": {
+    "message": "Сервер"
+  },
+  "serverHint": {
+    "message": "Адрес вашего TarifPing (меняйте только для локальной проверки)"
+  },
+  "outOfStock": {
+    "message": "нет в наличии"
+  },
+  "recordNow": {
+    "message": "Записать цену сейчас"
+  },
+  "changed": {
+    "message": "Изменение цены записано, уведомление отправлено согласно настройкам."
+  },
+  "recorded": {
+    "message": "Цена записана."
+  },
+  "tracked": {
+    "message": "Отслеживается TarifPing"
+  },
+  "lastPrice": {
+    "message": "последняя запись: $1"
+  },
+  "noPrice": {
+    "message": "Цена на этой странице не найдена. Дождитесь окончания загрузки или выберите вариант, затем снова откройте это окно."
+  },
+  "viewInApp": {
+    "message": "Посмотреть историю в TarifPing"
+  },
+  "autoHint": {
+    "message": "Цена записывается автоматически при каждом посещении этой страницы (не чаще раза в 20 минут)."
+  },
+  "noFolder": {
+    "message": "Без папки"
+  },
+  "track": {
+    "message": "Отслеживать этот товар"
+  },
+  "nameLabel": {
+    "message": "Название в TarifPing"
+  },
+  "folder": {
+    "message": "Папка"
+  },
+  "limitReached": {
+    "message": "Достигнут лимит в $1 страниц: перейдите на старший тариф в TarifPing."
+  },
+  "usage": {
+    "message": "Отслеживается страниц: $1 / $2"
+  },
+  "reload": {
+    "message": "Обновите страницу, чтобы включить расширение на этой вкладке."
+  },
+  "openProduct": {
+    "message": "Откройте страницу товара на одном из этих сайтов:"
+  },
+  "trackedCount": {
+    "message": "Товаров, отслеживаемых расширением: $1."
+  },
+  "promo": { "message": "Акция: $1" }
+}

@@ -1,0 +1,87 @@
+{
+  "name": {
+    "message": "TarifPing – متابعة الأسعار"
+  },
+  "description": {
+    "message": "تابع الأسعار على Amazon وAliExpress وeBay وnoon ونحو 30 متجرًا آخر: يُسجَّل السعر عند زيارتك للصفحة."
+  },
+  "loading": {
+    "message": "جارٍ التحميل…"
+  },
+  "openApp": {
+    "message": "فتح TarifPing"
+  },
+  "logout": {
+    "message": "قطع الاتصال"
+  },
+  "notConnected": {
+    "message": "الإضافة غير مرتبطة بـ TarifPing"
+  },
+  "connectIntro": {
+    "message": "اربط الإضافة بحسابك في TarifPing لمتابعة الأسعار على هذه المواقع:"
+  },
+  "connect": {
+    "message": "ربط حسابي"
+  },
+  "server": {
+    "message": "الخادم"
+  },
+  "serverHint": {
+    "message": "عنوان TarifPing الخاص بك (غيّره فقط لاختبار محلي)"
+  },
+  "outOfStock": {
+    "message": "نفد المخزون"
+  },
+  "recordNow": {
+    "message": "تسجيل السعر الآن"
+  },
+  "changed": {
+    "message": "تم تسجيل تغيّر السعر وإرسال تنبيه حسب إعداداتك."
+  },
+  "recorded": {
+    "message": "تم تسجيل السعر."
+  },
+  "tracked": {
+    "message": "يتابعه TarifPing"
+  },
+  "lastPrice": {
+    "message": "آخر تسجيل: $1"
+  },
+  "noPrice": {
+    "message": "لم يُعثر على سعر في هذه الصفحة. انتظر اكتمال التحميل أو اختر نوعًا، ثم افتح هذه النافذة من جديد."
+  },
+  "viewInApp": {
+    "message": "عرض السجل في TarifPing"
+  },
+  "autoHint": {
+    "message": "يُسجَّل السعر تلقائيًا في كل زيارة لهذه الصفحة (مرة كل 20 دقيقة على الأكثر)."
+  },
+  "noFolder": {
+    "message": "بلا مجلد"
+  },
+  "track": {
+    "message": "متابعة هذا المنتج"
+  },
+  "nameLabel": {
+    "message": "الاسم في TarifPing"
+  },
+  "folder": {
+    "message": "المجلد"
+  },
+  "limitReached": {
+    "message": "بلغت حد $1 صفحة: انتقل إلى باقة أعلى في TarifPing."
+  },
+  "usage": {
+    "message": "الصفحات المتابَعة: $1 / $2"
+  },
+  "reload": {
+    "message": "أعد تحميل الصفحة لتفعيل الإضافة في هذا التبويب."
+  },
+  "openProduct": {
+    "message": "افتح صفحة منتج على أحد هذه المواقع:"
+  },
+  "trackedCount": {
+    "message": "المنتجات التي تتابعها الإضافة: $1."
+  },
+  "promo": { "message": "عرض ترويجي: $1" }
+}

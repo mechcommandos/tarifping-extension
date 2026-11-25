@@ -1,0 +1,87 @@
+{
+  "name": {
+    "message": "TarifPing – monitoraggio dei prezzi"
+  },
+  "description": {
+    "message": "Segui i prezzi su Amazon, AliExpress, eBay, MediaWorld e una trentina di altri negozi: rilevati quando visiti la pagina."
+  },
+  "loading": {
+    "message": "Caricamento…"
+  },
+  "openApp": {
+    "message": "Apri TarifPing"
+  },
+  "logout": {
+    "message": "Scollega"
+  },
+  "notConnected": {
+    "message": "Estensione non collegata a TarifPing"
+  },
+  "connectIntro": {
+    "message": "Collega l'estensione al tuo account TarifPing per seguire i prezzi di questi siti:"
+  },
+  "connect": {
+    "message": "Collega il mio account"
+  },
+  "server": {
+    "message": "Server"
+  },
+  "serverHint": {
+    "message": "Indirizzo del tuo TarifPing (da cambiare solo per un test locale)"
+  },
+  "outOfStock": {
+    "message": "esaurito"
+  },
+  "recordNow": {
+    "message": "Rileva il prezzo ora"
+  },
+  "changed": {
+    "message": "Variazione di prezzo registrata, avviso inviato secondo le tue impostazioni."
+  },
+  "recorded": {
+    "message": "Prezzo rilevato."
+  },
+  "tracked": {
+    "message": "Seguito da TarifPing"
+  },
+  "lastPrice": {
+    "message": "ultima rilevazione: $1"
+  },
+  "noPrice": {
+    "message": "Prezzo non trovato in questa pagina. Attendi la fine del caricamento o scegli una variante, poi riapri questa finestra."
+  },
+  "viewInApp": {
+    "message": "Vedi lo storico in TarifPing"
+  },
+  "autoHint": {
+    "message": "Il prezzo viene rilevato automaticamente a ogni tua visita a questa pagina (al massimo ogni 20 minuti)."
+  },
+  "noFolder": {
+    "message": "Senza cartella"
+  },
+  "track": {
+    "message": "Segui questo prodotto"
+  },
+  "nameLabel": {
+    "message": "Nome in TarifPing"
+  },
+  "folder": {
+    "message": "Cartella"
+  },
+  "limitReached": {
+    "message": "Limite di $1 pagine raggiunto: passa al piano superiore in TarifPing."
+  },
+  "usage": {
+    "message": "$1 / $2 pagine seguite"
+  },
+  "reload": {
+    "message": "Ricarica la pagina per attivare l'estensione in questa scheda."
+  },
+  "openProduct": {
+    "message": "Apri la scheda di un prodotto su uno di questi siti:"
+  },
+  "trackedCount": {
+    "message": "$1 prodotto/i seguito/i dall'estensione."
+  },
+  "promo": { "message": "Promozione: $1" }
+}

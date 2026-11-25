@@ -1,0 +1,87 @@
+{
+  "name": {
+    "message": "TarifPing – prijzen volgen"
+  },
+  "description": {
+    "message": "Volg prijzen op Amazon, AliExpress, eBay, bol.com, Coolblue en zo’n 30 andere winkels: vastgelegd tijdens je bezoek."
+  },
+  "loading": {
+    "message": "Laden…"
+  },
+  "openApp": {
+    "message": "TarifPing openen"
+  },
+  "logout": {
+    "message": "Ontkoppelen"
+  },
+  "notConnected": {
+    "message": "Extensie niet gekoppeld aan TarifPing"
+  },
+  "connectIntro": {
+    "message": "Koppel de extensie aan je TarifPing-account om de prijzen op deze sites te volgen:"
+  },
+  "connect": {
+    "message": "Mijn account koppelen"
+  },
+  "server": {
+    "message": "Server"
+  },
+  "serverHint": {
+    "message": "Adres van je TarifPing (alleen wijzigen voor een lokale test)"
+  },
+  "outOfStock": {
+    "message": "uitverkocht"
+  },
+  "recordNow": {
+    "message": "Prijs nu vastleggen"
+  },
+  "changed": {
+    "message": "Prijswijziging vastgelegd, melding verstuurd volgens je instellingen."
+  },
+  "recorded": {
+    "message": "Prijs vastgelegd."
+  },
+  "tracked": {
+    "message": "Gevolgd door TarifPing"
+  },
+  "lastPrice": {
+    "message": "laatste meting: $1"
+  },
+  "noPrice": {
+    "message": "Geen prijs gevonden op deze pagina. Wacht tot ze klaar is met laden of kies een variant, en open dit venster opnieuw."
+  },
+  "viewInApp": {
+    "message": "Geschiedenis bekijken in TarifPing"
+  },
+  "autoHint": {
+    "message": "De prijs wordt automatisch vastgelegd bij elk bezoek aan deze pagina (hoogstens elke 20 minuten)."
+  },
+  "noFolder": {
+    "message": "Geen map"
+  },
+  "track": {
+    "message": "Dit product volgen"
+  },
+  "nameLabel": {
+    "message": "Naam in TarifPing"
+  },
+  "folder": {
+    "message": "Map"
+  },
+  "limitReached": {
+    "message": "Limiet van $1 pagina's bereikt: kies een hoger plan in TarifPing."
+  },
+  "usage": {
+    "message": "$1 / $2 pagina's gevolgd"
+  },
+  "reload": {
+    "message": "Herlaad de pagina om de extensie op dit tabblad te activeren."
+  },
+  "openProduct": {
+    "message": "Open een productpagina op een van deze sites:"
+  },
+  "trackedCount": {
+    "message": "$1 product(en) gevolgd door de extensie."
+  },
+  "promo": { "message": "Actie: $1" }
+}
